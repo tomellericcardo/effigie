@@ -23,14 +23,26 @@
             <h1 class="w3-xxlarge">Effigie</h1>
         </header>
 
-        <!-- OPTIONS -->
-        <div class="w3-container">
-            <input type="text" id="seed" class="w3-input" placeholder="Seed">
-        </div>
+        <!-- PAGE CONTENT -->
+        <div class="w3-row-padding">
 
-        <!-- EFFIGIE -->
-        <div class="w3-container w3-center">
-            <canvas id="effigie"></canvas>
+            <!-- EFFIGIE -->
+            <div class="w3-col s12 m6 l4 w3-center">
+                <canvas id="effigie"></canvas>
+            </div>
+
+            <!-- OPTIONS -->
+            <div id="options" class="w3-col s12 m6 l4">
+
+                <!-- SEED -->
+                <input type="text" id="seed" class="w3-input" placeholder="Seed">
+
+                <!-- PROBABILITY -->
+                <input type="range" min="0" max="100" value="50" id="probability">
+                Cell probability: <span id="probability-value">50</span>%
+
+            </div>
+
         </div>
 
 

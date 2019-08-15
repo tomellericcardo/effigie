@@ -2,10 +2,11 @@
 :root {
     --primary-color: #282c34;
     --secondary-color: #2c313c;
+    --primary-text: #ffffff;
+    --secondary-text: #757575;
     --field-color: #3a3f4b;
     --button-color: #3f51b5;
     --link-color: #82abff;
-    --text-color: #ffffff;
 }
 
 /* BODY */
@@ -13,7 +14,7 @@ body {
     background-color: var(--secondary-color);
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    color: var(--text-color);
+    color: var(--primary-text);
 }
 
 /* HEADER */
@@ -25,14 +26,41 @@ header {
 /* INPUT FIELDS */
 input, select {
     background-color: var(--field-color);
-    color: var(--text-color);
+    color: var(--primary-text);
+    border: 0!important;
 }
 
 input:focus, select:focus, button:focus {
     outline: none;
 }
 
+/* OPTIONS */
+#options {
+    color: var(--secondary-text);
+}
+
+/* PROBABILITY */
+#probability {
+    margin-top: 20px;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    background: var(--field-color);
+    outline: none;
+}
+
+#probability::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--button-color);
+    cursor: pointer;
+}
+
 /* EFFIGIE */
 canvas {
-    margin-top: 50px;
+    max-width: 256px;
+    margin-bottom: 20px;
 }

@@ -1,3 +1,4 @@
+// Global variables
 var CONTEXT;
 var OPTIONS = {
     seed: Date.now(),
@@ -7,11 +8,12 @@ var OPTIONS = {
     background: '#ffffff',
     cellColor: 'grey',
     cells: 7,
-    size: 256,
+    size: 512,
     margin: 20
 };
 
 
+// Initialize canvas element
 function initializeCanvas() {
     let canvas = document.querySelector('canvas');
     canvas.width = canvas.height = OPTIONS.size;
@@ -19,6 +21,7 @@ function initializeCanvas() {
     drawCanvas();
 }
 
+// Draw canvas
 function drawCanvas() {
     clearCanvas();
     Math.seedrandom(OPTIONS.seed);
@@ -30,11 +33,13 @@ function drawCanvas() {
     }
 }
 
+// Clear canvas
 function clearCanvas() {
     CONTEXT.fillStyle = OPTIONS.background;
     CONTEXT.fillRect(0, 0, OPTIONS.size, OPTIONS.size);
 }
 
+// Get different cells per row
 function getCells() {
     let cells = OPTIONS.cells;
     if (OPTIONS.symmetrical) {
@@ -44,6 +49,7 @@ function getCells() {
     return cells;
 }
 
+// Draw cell and its eventual symmetrical
 function drawCell(i, j, cellColor) {
     let cellSize = getCellSize();
     if (Math.random() < OPTIONS.probability) {
@@ -65,10 +71,12 @@ function drawCell(i, j, cellColor) {
     }
 }
 
+// Calculate cell size
 function getCellSize() {
     return (OPTIONS.size - (OPTIONS.margin * 2)) / OPTIONS.cells;
 }
 
+// Get specific or random color
 function getColor() {
     if (OPTIONS.randomColor) {
         let letters = '0123456789ABCDEF';
@@ -81,20 +89,35 @@ function getColor() {
     return OPTIONS.color;
 }
 
+// Draw a single rectangle
 function drawRect(x, y, size, color) {
     CONTEXT.fillStyle = color;
     CONTEXT.fillRect(x - 1, y - 1, size + 1, size + 1);
 }
 
+// Initialize options changes
 function initializeOptions() {
+
+    // Seed option
     let seed = document.querySelector('#seed');
     seed.addEventListener('keyup', function() {
         OPTIONS.seed = seed.value;
         drawCanvas();
     });
+
+    // Probability option
+    let probability = document.querySelector('#probability');
+    let probabilityValue = document.querySelector('#probability-value');
+    probability.addEventListener('change', function() {
+        OPTIONS.probability = probability.value / 100;
+        probabilityValue.innerHTML = probability.value;
+        drawCanvas();
+    });
+
 }
 
 
+// Ready page
 document.addEventListener('DOMContentLoaded', function() {
     initializeCanvas();
     initializeOptions();
