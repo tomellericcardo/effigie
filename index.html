@@ -38,13 +38,21 @@
                 <input type="text" id="seed" class="w3-input" placeholder="Seed">
 
                 <!-- PROBABILITY -->
-                <input type="range" min="0" max="100" value="50" id="probability">
-                Cell probability: <span id="probability-value">50</span>%
+                <input type="range" class="slider" min="0" max="100" value="50" id="probability">
+                &nbsp; Fill ratio: <span id="probability-value">50</span>%
+
+                <!-- CELLS -->
+                <input type="range" class="slider" min="4" max="12" value="7" id="cells">
+                &nbsp; Cells: <span id="cells-value">7x7</span><br>
+
+                <!-- SYMMETRICAL -->
+                <input type="checkbox" id="symmetrical" name="symmetrical" class="w3-check" checked>
+                <label for="symmetrical">Symmetrical</label>
 
             </div>
 
             <!-- DOWNLOAD -->
-            <a id="download" class="w3-btn w3-card w3-xlarge w3-circle">
+            <a id="download" class="w3-btn w3-card w3-xlarSge w3-circle">
                 <i class="material-icons">get_app</i>
             </a>
 

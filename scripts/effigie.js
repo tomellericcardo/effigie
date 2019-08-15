@@ -1,7 +1,6 @@
 // Global variables
 var CONTEXT;
 var OPTIONS = {
-    seed: Date.now(),
     probability: 0.5,
     symmetrical: true,
     randomColor: true,
@@ -23,6 +22,9 @@ function initializeCanvas() {
 
 // Create a new effigie
 function createEffigie() {
+    let seed = document.querySelector('#seed');
+    if (seed.value != '') OPTIONS.seed = seed.value;
+    else OPTIONS.seed = Date.now();
     drawCanvas();
     initializeDownload();
 }
@@ -86,9 +88,10 @@ function getCellSize() {
 function getColor() {
     if (OPTIONS.randomColor) {
         let letters = '0123456789ABCDEF';
-        let color = '#';
+        let color = '#', value;
         for (let i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
+            value = Math.floor(Math.random() * 16);
+            color += letters[value];
         }
         return color;
     }
@@ -117,7 +120,6 @@ function initializeOptions() {
     // Seed option
     let seed = document.querySelector('#seed');
     seed.addEventListener('keyup', function() {
-        OPTIONS.seed = seed.value;
         createEffigie();
     });
 
@@ -127,6 +129,23 @@ function initializeOptions() {
     probability.addEventListener('change', function() {
         OPTIONS.probability = probability.value / 100;
         probabilityValue.innerHTML = probability.value;
+        createEffigie();
+    });
+
+    // Cells option
+    let cells = document.querySelector('#cells');
+    let cellsValue = document.querySelector('#cells-value');
+    cells.addEventListener('change', function() {
+        OPTIONS.cells = cells.value;
+        let value = cells.value + 'x' + cells.value;
+        cellsValue.innerHTML = value;
+        createEffigie();
+    });
+
+    // Symmetrical option
+    let symmetrical = document.querySelector('#symmetrical');
+    symmetrical.addEventListener('change', function() {
+        OPTIONS.symmetrical = symmetrical.checked;
         createEffigie();
     });
 

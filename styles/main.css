@@ -40,17 +40,22 @@ input:focus, select:focus, button:focus {
     margin-bottom: 100px;
 }
 
-/* PROBABILITY */
-#probability {
+/* SPACE */
+.space {
+    width: 10px;
+}
+
+/* SLIDER */
+.slider {
     margin-top: 20px;
     -webkit-appearance: none;
-    width: 100%;
+    width: 60%;
     height: 10px;
     background: var(--field-color);
     outline: none;
 }
 
-#probability::-webkit-slider-thumb {
+.slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 20px;
@@ -58,6 +63,13 @@ input:focus, select:focus, button:focus {
     border-radius: 50%;
     background: var(--button-color);
     cursor: pointer;
+}
+
+/* SYMMETRICAL */
+#symmetrical {
+    width: 22px;
+    height: 22px;
+    margin: 5px 3px 0 0;
 }
 
 /* EFFIGIE */
@@ -77,4 +89,8 @@ canvas {
     height: 56px;
     font-size: 30px;
     padding: 13px;
+}
+
+#download i {
+    vertical-align: 6px;
 }
