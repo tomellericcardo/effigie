@@ -1,0 +1,38 @@
+/* VARIABLES */
+:root {
+    --primary-color: #282c34;
+    --secondary-color: #2c313c;
+    --field-color: #3a3f4b;
+    --button-color: #3f51b5;
+    --link-color: #82abff;
+    --text-color: #ffffff;
+}
+
+/* BODY */
+body {
+    background-color: var(--secondary-color);
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+/* HEADER */
+header {
+    background-color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+/* INPUT FIELDS */
+input, select {
+    background-color: var(--field-color);
+    color: var(--text-color);
+}
+
+input:focus, select:focus, button:focus {
+    outline: none;
+}
+
+/* EFFIGIE */
+canvas {
+    margin-top: 50px;
+}
