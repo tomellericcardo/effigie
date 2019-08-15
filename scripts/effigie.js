@@ -18,7 +18,13 @@ function initializeCanvas() {
     let canvas = document.querySelector('canvas');
     canvas.width = canvas.height = OPTIONS.size;
     CONTEXT = canvas.getContext('2d');
+    createEffigie();
+}
+
+// Create a new effigie
+function createEffigie() {
     drawCanvas();
+    initializeDownload();
 }
 
 // Draw canvas
@@ -95,6 +101,16 @@ function drawRect(x, y, size, color) {
     CONTEXT.fillRect(x - 1, y - 1, size + 1, size + 1);
 }
 
+// Initialize download button
+function initializeDownload() {
+    let download = document.querySelector('#download');
+    let image = document.querySelector('canvas').toDataURL('image/png');
+    image.replace('image/png', 'image/octet-stream');
+    download.setAttribute('href', image);
+    let name = 'effigie_' + OPTIONS.seed + '.png';
+    download.setAttribute('download', name);
+}
+
 // Initialize options changes
 function initializeOptions() {
 
@@ -102,7 +118,7 @@ function initializeOptions() {
     let seed = document.querySelector('#seed');
     seed.addEventListener('keyup', function() {
         OPTIONS.seed = seed.value;
-        drawCanvas();
+        createEffigie();
     });
 
     // Probability option
@@ -111,7 +127,7 @@ function initializeOptions() {
     probability.addEventListener('change', function() {
         OPTIONS.probability = probability.value / 100;
         probabilityValue.innerHTML = probability.value;
-        drawCanvas();
+        createEffigie();
     });
 
 }

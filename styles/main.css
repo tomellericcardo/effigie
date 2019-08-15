@@ -37,6 +37,7 @@ input:focus, select:focus, button:focus {
 /* OPTIONS */
 #options {
     color: var(--secondary-text);
+    margin-bottom: 100px;
 }
 
 /* PROBABILITY */
@@ -61,6 +62,19 @@ input:focus, select:focus, button:focus {
 
 /* EFFIGIE */
 canvas {
-    max-width: 256px;
+    max-width: 90%;
     margin-bottom: 20px;
+}
+
+/* DOWNLOAD */
+#download {
+    background-color: var(--button-color)!important;
+    color: var(--primary-text)!important;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 56px;
+    height: 56px;
+    font-size: 30px;
+    padding: 13px;
 }
