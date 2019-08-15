@@ -4,7 +4,7 @@ var OPTIONS = {
     probability: 0.5,
     symmetrical: true,
     randomColor: true,
-    background: '#ffffff',
+    background: '#f0f0f0',
     cellColor: 'grey',
     cells: 7,
     size: 512,
