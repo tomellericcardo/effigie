@@ -5,12 +5,19 @@ var OPTIONS = {
     symmetrical: true,
     randomColor: true,
     background: '#f0f0f0',
-    cellColor: 'grey',
+    cellColor: '#3f51b5',
     cells: 7,
     size: 512,
     margin: 20
 };
 
+
+// Service worker installation
+function installServiceWorker() {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js');
+    }
+}
 
 // Initialize canvas element
 function initializeCanvas() {
@@ -95,7 +102,7 @@ function getColor() {
         }
         return color;
     }
-    return OPTIONS.color;
+    return OPTIONS.cellColor;
 }
 
 // Draw a single rectangle
@@ -154,6 +161,7 @@ function initializeOptions() {
 
 // Ready page
 document.addEventListener('DOMContentLoaded', function() {
+    installServiceWorker();
     initializeCanvas();
     initializeOptions();
 });

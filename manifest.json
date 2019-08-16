@@ -1,0 +1,22 @@
+{
+    "name": "Effigie",
+    "short_name": "Effigie",
+    "description": "A seedable avatar generator inspired by GitHub's Identicons",
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#2c313c",
+    "theme_color": "#282c34",
+    "icons": [
+        {
+            "src": "\/images\/effigie192.png",
+            "sizes": "192x192",
+            "type": "image\/png"
+        },
+        {
+            "src": "\/images\/effigie512.png",
+            "sizes": "512x512",
+            "type": "image\/png"
+        }
+    ]
+}
