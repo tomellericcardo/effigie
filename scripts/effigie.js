@@ -39,8 +39,8 @@ function createEffigie() {
 // Draw canvas
 function drawCanvas() {
     clearCanvas();
-    Math.seedrandom(OPTIONS.seed);
     let cellColor = getColor();
+    Math.seedrandom(OPTIONS.seed);
     for (let i = 0; i < getCells(); i++) {
         for (let j = 0; j < OPTIONS.cells; j++) {
             drawCell(i, j, cellColor);
@@ -94,6 +94,7 @@ function getCellSize() {
 // Get specific or random color
 function getColor() {
     if (OPTIONS.randomColor) {
+        Math.seedrandom(OPTIONS.seed);
         let letters = '0123456789ABCDEF';
         let color = '#', value;
         for (let i = 0; i < 6; i++) {
