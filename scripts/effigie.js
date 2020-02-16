@@ -1,6 +1,5 @@
 // Global variables
-var CONTEXT;
-var OPTIONS = {
+var CONTEXT, OPTIONS = {
     probability: 0.5,
     symmetrical: true,
     randomColor: true,
@@ -8,7 +7,7 @@ var OPTIONS = {
     cellColor: '#3f51b5',
     cells: 7,
     size: 512,
-    margin: 20
+    margin: 5
 };
 
 
@@ -50,7 +49,7 @@ function drawCanvas() {
 
 // Clear canvas
 function clearCanvas() {
-    CONTEXT.fillStyle = OPTIONS.background;
+    CONTEXT.fillStyle = OPTIONS.randomColor ? '#f0f0f0' : OPTIONS.background;
     CONTEXT.fillRect(0, 0, OPTIONS.size, OPTIONS.size);
 }
 
@@ -66,29 +65,25 @@ function getCells() {
 
 // Draw cell and its eventual symmetrical
 function drawCell(i, j, cellColor) {
-    let cellSize = getCellSize();
+    let absoluteMargin = (OPTIONS.margin * OPTIONS.size) / 100;
+    let cellSize = (OPTIONS.size - (absoluteMargin * 2)) / OPTIONS.cells;
     if (Math.random() < OPTIONS.probability) {
-        let x = (i * cellSize) + OPTIONS.margin;
-        let y = (j * cellSize) + OPTIONS.margin;
+        let x = (i * cellSize) + absoluteMargin;
+        let y = (j * cellSize) + absoluteMargin;
         drawRect(x, y, cellSize, cellColor);
         if (OPTIONS.symmetrical) {
             let central = getCells() - 1;
             if (OPTIONS.cells % 2 == 0) {
                 let k = OPTIONS.cells - i - 1;
-                x = (k * cellSize) + OPTIONS.margin;
+                x = (k * cellSize) + absoluteMargin;
                 drawRect(x, y, cellSize, cellColor);
             } else if (i != central) {
                 let k = (2 * central) - i;
-                x = (k * cellSize) + OPTIONS.margin;
+                x = (k * cellSize) + absoluteMargin;
                 drawRect(x, y, cellSize, cellColor);
             }
         }
     }
-}
-
-// Calculate cell size
-function getCellSize() {
-    return (OPTIONS.size - (OPTIONS.margin * 2)) / OPTIONS.cells;
 }
 
 // Get specific or random color
@@ -150,10 +145,47 @@ function initializeOptions() {
         createEffigie();
     });
 
+    // Size option
+    let size = document.querySelector('#size');
+    let sizeValue = document.querySelector('#size-value');
+    size.addEventListener('change', function() {
+        OPTIONS.size = size.value;
+        sizeValue.innerHTML = size.value;
+        initializeCanvas();
+    });
+
+    // Margin option
+    let margin = document.querySelector('#margin');
+    let marginValue = document.querySelector('#margin-value');
+    margin.addEventListener('change', function() {
+        OPTIONS.margin = margin.value;
+        marginValue.innerHTML = margin.value;
+        createEffigie();
+    });
+
     // Symmetrical option
     let symmetrical = document.querySelector('#symmetrical');
     symmetrical.addEventListener('change', function() {
         OPTIONS.symmetrical = symmetrical.checked;
+        createEffigie();
+    });
+
+    // Color options
+    let random = document.querySelector('#random');
+    let color = document.querySelector('#color');
+    let background = document.querySelector('#background');
+    random.addEventListener('change', function() {
+        OPTIONS.randomColor = random.checked;
+        color.disabled = random.checked;
+        background.disabled = random.checked;
+        createEffigie();
+    });
+    color.addEventListener('change', function() {
+        OPTIONS.cellColor = color.value;
+        createEffigie();
+    });
+    background.addEventListener('change', function() {
+        OPTIONS.background = background.value;
         createEffigie();
     });
 

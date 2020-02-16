@@ -45,6 +45,13 @@ input:focus, select:focus, button:focus {
     width: 10px;
 }
 
+/* COLOR PICKERS */
+.picker {
+    width: 50%;
+    margin-top: 15px;
+    margin-right: 5px;
+}
+
 /* SLIDER */
 .slider {
     margin-top: 20px;
@@ -65,8 +72,8 @@ input:focus, select:focus, button:focus {
     cursor: pointer;
 }
 
-/* SYMMETRICAL */
-#symmetrical {
+/* CHECKBOXES */
+.w3-check {
     width: 22px;
     height: 22px;
     margin: 5px 3px 0 0;

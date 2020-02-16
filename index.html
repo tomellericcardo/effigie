@@ -44,16 +44,45 @@
                 <input type="text" id="seed" class="w3-input" placeholder="Seed">
 
                 <!-- PROBABILITY -->
-                <input type="range" id="probability" min="0" max="100" value="50" class="slider">
+                <input type="range" id="probability" min="10" max="90" value="50" class="slider">
                 &nbsp; Fill ratio: <span id="probability-value">50</span>%
 
                 <!-- CELLS -->
-                <input type="range" id="cells" min="4" max="12" value="7" class="slider">
-                &nbsp; Cells: <span id="cells-value">7x7</span><br>
+                <input type="range" id="cells" min="4" max="16" value="7" class="slider">
+                &nbsp; Cells: <span id="cells-value">7x7</span>
 
-                <!-- SYMMETRICAL -->
-                <input type="checkbox" id="symmetrical" name="symmetrical" class="w3-check" checked>
-                <label for="symmetrical">Symmetrical</label>
+                <!-- SIZE -->
+                <input type="range" id="size" min="256" max="1024" step="256" value="512" class="slider">
+                &nbsp; Size: <span id="size-value">512</span>px
+
+                <!-- MARGIN -->
+                <input type="range" id="margin" min="0" max="20" value="5" class="slider">
+                &nbsp; Margin: <span id="margin-value">5</span>%
+
+                <!-- CHECKBOXES -->
+                <div class="w3-row">
+
+                    <!-- RANDOM COLOR -->
+                    <div class="w3-col s6">
+                        <input type="checkbox" id="random" name="random" class="w3-check" checked>
+                        <label for="random">Random color</label>
+                    </div>
+
+                    <!-- SYMMETRICAL -->
+                    <div class="w3-col s6">
+                        <input type="checkbox" id="symmetrical" name="symmetrical" class="w3-check" checked>
+                        <label for="symmetrical">Symmetrical</label>
+                    </div>
+
+                </div>
+
+                <!-- CELL COLOR -->
+                <input type="color" id="color" name="color" class="picker" value="#3f51b5" disabled>
+                <label for="color">Cells color</label>
+
+                <!-- BACKGROUND COLOR -->
+                <input type="color" id="background" name="background" class="picker" value="#f0f0f0" disabled>
+                <label for="background">Background color</label>
 
             </div>
 
